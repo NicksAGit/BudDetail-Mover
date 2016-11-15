@@ -1,4 +1,4 @@
-<?xml version="1.0"?>
+﻿<?xml version="1.0"?>
 <DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
   DTS:refId="Package"
   DTS:CreationDate="11/14/2016 3:32:24 PM"
@@ -11,9 +11,2276 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="Package"
   DTS:PackageType="5"
-  DTS:VersionGUID="{14B6E1FC-7F9A-43EA-B69D-F2EB92BE59FC}">
+  DTS:VersionBuild="10"
+  DTS:VersionGUID="{2C5E3D20-5EE4-41A1-BC63-AA4D64BBED2C}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[m-mssqlprd012,14330.lsa_AdminData]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{D7FE6B55-AF96-4217-8A83-F7BF549DCC1D}"
+      DTS:ObjectName="m-mssqlprd012,14330.lsa_AdminData">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=m-mssqlprd012,14330;Initial Catalog=lsa_AdminData;Provider=SQLOLEDB.1;Integrated Security=SSPI;Application Name=SSIS-Package-{D7FE6B55-AF96-4217-8A83-F7BF549DCC1D}m-mssqlprd012,14330.lsa_AdminData;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[pooh.lbud]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{EB95E12E-B938-46A4-BE6B-36648333959D}"
+      DTS:ObjectName="pooh.lbud">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=pooh;User ID=lbud;Provider=MSDAORA.1;Persist Security Info=True;">
+          <DTS:Password
+            DTS:Name="Password"
+            Sensitive="1"
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAnWhmm+7gUkSYUEFfqc0ZWAAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAABZQTsOOBHAzXoFxdwXP64PAAAAAASAAACgAAAAEAAAAPGtYXfUqp85PugisCiuXy0YAAAAbZXouj2vqEMqsKs7hgNNSOYGbkz2g5MYFAAAAAubPpH9Jxe3uI9DhJD76Pfbq9We</DTS:Password>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
   <DTS:Variables />
-  <DTS:Executables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Copy Data"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Sequence Container"
+      DTS:DTSID="{39DAC162-FC27-4638-A810-D1DC9CCE1350}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Copy Data">
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\Copy Data\BudDetail"
+          DTS:CreationName="Microsoft.Pipeline"
+          DTS:Description="Data Flow Task"
+          DTS:DTSID="{85DEA60B-C8CE-40ED-8A7D-037006ED2A2A}"
+          DTS:ExecutableType="Microsoft.Pipeline"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="BudDetail"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <pipeline
+              version="1">
+              <components>
+                <component
+                  refId="Package\Copy Data\BudDetail\OLE DB Destination"
+                  componentClassID="Microsoft.OLEDBDestination"
+                  contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+                  description="OLE DB Destination"
+                  name="OLE DB Destination"
+                  usesDispositions="true"
+                  version="4">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[dbo].[BudDetail]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">0</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepIdentity">false</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                      name="FastLoadOptions"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                      name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Copy Data\BudDetail\OLE DB Destination.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[m-mssqlprd012,14330.lsa_AdminData]"
+                      connectionManagerRefId="Package.ConnectionManagers[m-mssqlprd012,14330.lsa_AdminData]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\Copy Data\BudDetail\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                      errorOrTruncationOperation="Insert"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="OLE DB Destination Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Copy Data\BudDetail\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[BUDDETIDNUM]"
+                          cachedDataType="numeric"
+                          cachedName="BUDDETIDNUM"
+                          cachedPrecision="9"
+                          externalMetadataColumnId="Package\Copy Data\BudDetail\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[BudDetIDNum]"
+                          lineageId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Output].Columns[BUDDETIDNUM]" />
+                        <inputColumn
+                          refId="Package\Copy Data\BudDetail\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[FUND_CODE]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="5"
+                          cachedName="FUND_CODE"
+                          externalMetadataColumnId="Package\Copy Data\BudDetail\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Fund_Code]"
+                          lineageId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Output].Columns[FUND_CODE]" />
+                        <inputColumn
+                          refId="Package\Copy Data\BudDetail\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[PROGRAM_CODE]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="5"
+                          cachedName="PROGRAM_CODE"
+                          externalMetadataColumnId="Package\Copy Data\BudDetail\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Program_Code]"
+                          lineageId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Output].Columns[PROGRAM_CODE]" />
+                        <inputColumn
+                          refId="Package\Copy Data\BudDetail\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[PROJECT_GRANT]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="15"
+                          cachedName="PROJECT_GRANT"
+                          externalMetadataColumnId="Package\Copy Data\BudDetail\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Project_Grant]"
+                          lineageId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Output].Columns[PROJECT_GRANT]" />
+                        <inputColumn
+                          refId="Package\Copy Data\BudDetail\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[ACCOUNT]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="6"
+                          cachedName="ACCOUNT"
+                          externalMetadataColumnId="Package\Copy Data\BudDetail\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Account]"
+                          lineageId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Output].Columns[ACCOUNT]" />
+                        <inputColumn
+                          refId="Package\Copy Data\BudDetail\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[FY]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="4"
+                          cachedName="FY"
+                          externalMetadataColumnId="Package\Copy Data\BudDetail\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[FY]"
+                          lineageId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Output].Columns[FY]" />
+                        <inputColumn
+                          refId="Package\Copy Data\BudDetail\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[LEDGER]"
+                          cachedDataType="numeric"
+                          cachedName="LEDGER"
+                          cachedPrecision="2"
+                          externalMetadataColumnId="Package\Copy Data\BudDetail\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Ledger]"
+                          lineageId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Output].Columns[LEDGER]" />
+                        <inputColumn
+                          refId="Package\Copy Data\BudDetail\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[FYBUDAMT]"
+                          cachedDataType="numeric"
+                          cachedName="FYBUDAMT"
+                          cachedPrecision="15"
+                          cachedScale="2"
+                          externalMetadataColumnId="Package\Copy Data\BudDetail\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[FYBudAmt]"
+                          lineageId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Output].Columns[FYBUDAMT]" />
+                        <inputColumn
+                          refId="Package\Copy Data\BudDetail\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[FYBUDFTE]"
+                          cachedDataType="numeric"
+                          cachedName="FYBUDFTE"
+                          cachedPrecision="15"
+                          cachedScale="2"
+                          externalMetadataColumnId="Package\Copy Data\BudDetail\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[FYBudFTE]"
+                          lineageId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Output].Columns[FYBUDFTE]" />
+                        <inputColumn
+                          refId="Package\Copy Data\BudDetail\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[COMMIT_TYPE]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="1"
+                          cachedName="COMMIT_TYPE"
+                          externalMetadataColumnId="Package\Copy Data\BudDetail\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Commit_Type]"
+                          lineageId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Output].Columns[COMMIT_TYPE]" />
+                        <inputColumn
+                          refId="Package\Copy Data\BudDetail\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[ITEM_STATUS]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="1"
+                          cachedName="ITEM_STATUS"
+                          externalMetadataColumnId="Package\Copy Data\BudDetail\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Item_Status]"
+                          lineageId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Output].Columns[ITEM_STATUS]" />
+                        <inputColumn
+                          refId="Package\Copy Data\BudDetail\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[ITEM_SOURCE]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="1"
+                          cachedName="ITEM_SOURCE"
+                          externalMetadataColumnId="Package\Copy Data\BudDetail\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Item_Source]"
+                          lineageId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Output].Columns[ITEM_SOURCE]" />
+                        <inputColumn
+                          refId="Package\Copy Data\BudDetail\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[ITEM_PRIORITY]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="1"
+                          cachedName="ITEM_PRIORITY"
+                          externalMetadataColumnId="Package\Copy Data\BudDetail\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Item_Priority]"
+                          lineageId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Output].Columns[ITEM_PRIORITY]" />
+                        <inputColumn
+                          refId="Package\Copy Data\BudDetail\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[BEGINFY]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="4"
+                          cachedName="BEGINFY"
+                          externalMetadataColumnId="Package\Copy Data\BudDetail\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[BeginFY]"
+                          lineageId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Output].Columns[BEGINFY]" />
+                        <inputColumn
+                          refId="Package\Copy Data\BudDetail\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[ENDFY]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="4"
+                          cachedName="ENDFY"
+                          externalMetadataColumnId="Package\Copy Data\BudDetail\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[EndFY]"
+                          lineageId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Output].Columns[ENDFY]" />
+                        <inputColumn
+                          refId="Package\Copy Data\BudDetail\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[CONSOLIDATE_ON_ROLL_FORWARD]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="1"
+                          cachedName="CONSOLIDATE_ON_ROLL_FORWARD"
+                          externalMetadataColumnId="Package\Copy Data\BudDetail\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Consolidate_On_Roll_Forward]"
+                          lineageId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Output].Columns[CONSOLIDATE_ON_ROLL_FORWARD]" />
+                        <inputColumn
+                          refId="Package\Copy Data\BudDetail\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[INSTRUCTIONAL_BUDGET]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="1"
+                          cachedName="INSTRUCTIONAL_BUDGET"
+                          externalMetadataColumnId="Package\Copy Data\BudDetail\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Instructional_Budget]"
+                          lineageId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Output].Columns[INSTRUCTIONAL_BUDGET]" />
+                        <inputColumn
+                          refId="Package\Copy Data\BudDetail\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[INSTR_BUDGET_ADJUST]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="1"
+                          cachedName="INSTR_BUDGET_ADJUST"
+                          externalMetadataColumnId="Package\Copy Data\BudDetail\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Instr_Budget_Adjust]"
+                          lineageId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Output].Columns[INSTR_BUDGET_ADJUST]" />
+                        <inputColumn
+                          refId="Package\Copy Data\BudDetail\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[SHORT_DESCR]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="40"
+                          cachedName="SHORT_DESCR"
+                          externalMetadataColumnId="Package\Copy Data\BudDetail\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Short_Descr]"
+                          lineageId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Output].Columns[SHORT_DESCR]" />
+                        <inputColumn
+                          refId="Package\Copy Data\BudDetail\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[YEAR_ORDINAL]"
+                          cachedDataType="r8"
+                          cachedName="YEAR_ORDINAL"
+                          externalMetadataColumnId="Package\Copy Data\BudDetail\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Year_Ordinal]"
+                          lineageId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Output].Columns[YEAR_ORDINAL]" />
+                        <inputColumn
+                          refId="Package\Copy Data\BudDetail\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[YEARS_TOTAL]"
+                          cachedDataType="r8"
+                          cachedName="YEARS_TOTAL"
+                          externalMetadataColumnId="Package\Copy Data\BudDetail\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Years_Total]"
+                          lineageId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Output].Columns[YEARS_TOTAL]" />
+                        <inputColumn
+                          refId="Package\Copy Data\BudDetail\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[SOURCE_PG]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="15"
+                          cachedName="SOURCE_PG"
+                          externalMetadataColumnId="Package\Copy Data\BudDetail\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Source_PG]"
+                          lineageId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Output].Columns[SOURCE_PG]" />
+                        <inputColumn
+                          refId="Package\Copy Data\BudDetail\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[SOURCE_PROGRAM_CODE]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="5"
+                          cachedName="SOURCE_PROGRAM_CODE"
+                          externalMetadataColumnId="Package\Copy Data\BudDetail\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Source_Program_Code]"
+                          lineageId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Output].Columns[SOURCE_PROGRAM_CODE]" />
+                        <inputColumn
+                          refId="Package\Copy Data\BudDetail\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[ISMAINITEM]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="1"
+                          cachedName="ISMAINITEM"
+                          externalMetadataColumnId="Package\Copy Data\BudDetail\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[IsMainItem]"
+                          lineageId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Output].Columns[ISMAINITEM]" />
+                        <inputColumn
+                          refId="Package\Copy Data\BudDetail\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[MAINITEMBUDDETIDNUM]"
+                          cachedDataType="numeric"
+                          cachedName="MAINITEMBUDDETIDNUM"
+                          cachedPrecision="9"
+                          externalMetadataColumnId="Package\Copy Data\BudDetail\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[MainItemBudDetIDNum]"
+                          lineageId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Output].Columns[MAINITEMBUDDETIDNUM]" />
+                        <inputColumn
+                          refId="Package\Copy Data\BudDetail\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[LASTYEARBUDDETIDNUM]"
+                          cachedDataType="numeric"
+                          cachedName="LASTYEARBUDDETIDNUM"
+                          cachedPrecision="9"
+                          externalMetadataColumnId="Package\Copy Data\BudDetail\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[LastYearBudDetIDNum]"
+                          lineageId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Output].Columns[LASTYEARBUDDETIDNUM]" />
+                        <inputColumn
+                          refId="Package\Copy Data\BudDetail\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[BUDDET_DESCR]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="2000"
+                          cachedName="BUDDET_DESCR"
+                          externalMetadataColumnId="Package\Copy Data\BudDetail\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[BudDet_Descr]"
+                          lineageId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Output].Columns[BUDDET_DESCR]" />
+                        <inputColumn
+                          refId="Package\Copy Data\BudDetail\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[APPTBUDGETPCT]"
+                          cachedDataType="numeric"
+                          cachedName="APPTBUDGETPCT"
+                          cachedPrecision="4"
+                          cachedScale="3"
+                          externalMetadataColumnId="Package\Copy Data\BudDetail\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ApptBudgetPct]"
+                          lineageId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Output].Columns[APPTBUDGETPCT]" />
+                        <inputColumn
+                          refId="Package\Copy Data\BudDetail\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[PUBLISH]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="1"
+                          cachedName="PUBLISH"
+                          externalMetadataColumnId="Package\Copy Data\BudDetail\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Publish]"
+                          lineageId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Output].Columns[PUBLISH]" />
+                        <inputColumn
+                          refId="Package\Copy Data\BudDetail\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[LAST_UPDATE]"
+                          cachedDataType="dbTimeStamp"
+                          cachedName="LAST_UPDATE"
+                          externalMetadataColumnId="Package\Copy Data\BudDetail\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Last_Update]"
+                          lineageId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Output].Columns[LAST_UPDATE]" />
+                        <inputColumn
+                          refId="Package\Copy Data\BudDetail\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[ROUTING_DEPTID]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="6"
+                          cachedName="ROUTING_DEPTID"
+                          externalMetadataColumnId="Package\Copy Data\BudDetail\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Routing_Deptid]"
+                          lineageId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Output].Columns[ROUTING_DEPTID]" />
+                        <inputColumn
+                          refId="Package\Copy Data\BudDetail\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[REQUEST_CATEGORY]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="1"
+                          cachedName="REQUEST_CATEGORY"
+                          externalMetadataColumnId="Package\Copy Data\BudDetail\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Request_Category]"
+                          lineageId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Output].Columns[REQUEST_CATEGORY]" />
+                        <inputColumn
+                          refId="Package\Copy Data\BudDetail\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[REQUEST_DEPT_PRIORITY]"
+                          cachedDataType="numeric"
+                          cachedName="REQUEST_DEPT_PRIORITY"
+                          cachedPrecision="3"
+                          externalMetadataColumnId="Package\Copy Data\BudDetail\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Request_Dept_Priority]"
+                          lineageId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Output].Columns[REQUEST_DEPT_PRIORITY]" />
+                        <inputColumn
+                          refId="Package\Copy Data\BudDetail\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[COPY_FORWARD]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="1"
+                          cachedName="COPY_FORWARD"
+                          externalMetadataColumnId="Package\Copy Data\BudDetail\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Copy_Forward]"
+                          lineageId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Output].Columns[COPY_FORWARD]" />
+                        <inputColumn
+                          refId="Package\Copy Data\BudDetail\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[DEAN_RESPONSE]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="2000"
+                          cachedName="DEAN_RESPONSE"
+                          externalMetadataColumnId="Package\Copy Data\BudDetail\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Dean_Response]"
+                          lineageId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Output].Columns[DEAN_RESPONSE]" />
+                        <inputColumn
+                          refId="Package\Copy Data\BudDetail\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[FYREQAMT]"
+                          cachedDataType="numeric"
+                          cachedName="FYREQAMT"
+                          cachedPrecision="15"
+                          cachedScale="2"
+                          externalMetadataColumnId="Package\Copy Data\BudDetail\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[FYReqAmt]"
+                          lineageId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Output].Columns[FYREQAMT]" />
+                        <inputColumn
+                          refId="Package\Copy Data\BudDetail\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[ORG_CODE]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="10"
+                          cachedName="ORG_CODE"
+                          externalMetadataColumnId="Package\Copy Data\BudDetail\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DeptID]"
+                          lineageId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Output].Columns[ORG_CODE]" />
+                        <inputColumn
+                          refId="Package\Copy Data\BudDetail\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[SUBCLASS]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="5"
+                          cachedName="SUBCLASS"
+                          externalMetadataColumnId="Package\Copy Data\BudDetail\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Class]"
+                          lineageId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Output].Columns[SUBCLASS]" />
+                        <inputColumn
+                          refId="Package\Copy Data\BudDetail\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[T_ORG_CODE]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="6"
+                          cachedName="T_ORG_CODE"
+                          externalMetadataColumnId="Package\Copy Data\BudDetail\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[T_DeptID]"
+                          lineageId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Output].Columns[T_ORG_CODE]" />
+                        <inputColumn
+                          refId="Package\Copy Data\BudDetail\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[DEANNOTE]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="2000"
+                          cachedName="DEANNOTE"
+                          externalMetadataColumnId="Package\Copy Data\BudDetail\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Dean_Note]"
+                          lineageId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Output].Columns[DEANNOTE]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Copy Data\BudDetail\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[BudDetIDNum]"
+                          dataType="i4"
+                          name="BudDetIDNum" />
+                        <externalMetadataColumn
+                          refId="Package\Copy Data\BudDetail\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Fund_Code]"
+                          codePage="1252"
+                          dataType="str"
+                          length="5"
+                          name="Fund_Code" />
+                        <externalMetadataColumn
+                          refId="Package\Copy Data\BudDetail\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DeptID]"
+                          codePage="1252"
+                          dataType="str"
+                          length="10"
+                          name="DeptID" />
+                        <externalMetadataColumn
+                          refId="Package\Copy Data\BudDetail\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Program_Code]"
+                          codePage="1252"
+                          dataType="str"
+                          length="5"
+                          name="Program_Code" />
+                        <externalMetadataColumn
+                          refId="Package\Copy Data\BudDetail\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Project_Grant]"
+                          codePage="1252"
+                          dataType="str"
+                          length="15"
+                          name="Project_Grant" />
+                        <externalMetadataColumn
+                          refId="Package\Copy Data\BudDetail\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Account]"
+                          codePage="1252"
+                          dataType="str"
+                          length="6"
+                          name="Account" />
+                        <externalMetadataColumn
+                          refId="Package\Copy Data\BudDetail\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Class]"
+                          codePage="1252"
+                          dataType="str"
+                          length="5"
+                          name="Class" />
+                        <externalMetadataColumn
+                          refId="Package\Copy Data\BudDetail\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[FY]"
+                          codePage="1252"
+                          dataType="str"
+                          length="4"
+                          name="FY" />
+                        <externalMetadataColumn
+                          refId="Package\Copy Data\BudDetail\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Ledger]"
+                          dataType="i2"
+                          name="Ledger" />
+                        <externalMetadataColumn
+                          refId="Package\Copy Data\BudDetail\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[FYBudAmt]"
+                          dataType="numeric"
+                          name="FYBudAmt"
+                          precision="15"
+                          scale="2" />
+                        <externalMetadataColumn
+                          refId="Package\Copy Data\BudDetail\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Commit_Type]"
+                          codePage="1252"
+                          dataType="str"
+                          length="1"
+                          name="Commit_Type" />
+                        <externalMetadataColumn
+                          refId="Package\Copy Data\BudDetail\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Item_Status]"
+                          codePage="1252"
+                          dataType="str"
+                          length="1"
+                          name="Item_Status" />
+                        <externalMetadataColumn
+                          refId="Package\Copy Data\BudDetail\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Item_Source]"
+                          codePage="1252"
+                          dataType="str"
+                          length="1"
+                          name="Item_Source" />
+                        <externalMetadataColumn
+                          refId="Package\Copy Data\BudDetail\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Item_Priority]"
+                          codePage="1252"
+                          dataType="str"
+                          length="1"
+                          name="Item_Priority" />
+                        <externalMetadataColumn
+                          refId="Package\Copy Data\BudDetail\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Short_Descr]"
+                          codePage="1252"
+                          dataType="str"
+                          length="40"
+                          name="Short_Descr" />
+                        <externalMetadataColumn
+                          refId="Package\Copy Data\BudDetail\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Publish]"
+                          codePage="1252"
+                          dataType="str"
+                          length="1"
+                          name="Publish" />
+                        <externalMetadataColumn
+                          refId="Package\Copy Data\BudDetail\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[BeginFY]"
+                          codePage="1252"
+                          dataType="str"
+                          length="4"
+                          name="BeginFY" />
+                        <externalMetadataColumn
+                          refId="Package\Copy Data\BudDetail\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[EndFY]"
+                          codePage="1252"
+                          dataType="str"
+                          length="4"
+                          name="EndFY" />
+                        <externalMetadataColumn
+                          refId="Package\Copy Data\BudDetail\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Year_Ordinal]"
+                          dataType="i4"
+                          name="Year_Ordinal" />
+                        <externalMetadataColumn
+                          refId="Package\Copy Data\BudDetail\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Years_Total]"
+                          dataType="i4"
+                          name="Years_Total" />
+                        <externalMetadataColumn
+                          refId="Package\Copy Data\BudDetail\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Instructional_Budget]"
+                          codePage="1252"
+                          dataType="str"
+                          length="1"
+                          name="Instructional_Budget" />
+                        <externalMetadataColumn
+                          refId="Package\Copy Data\BudDetail\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Instr_Budget_Adjust]"
+                          codePage="1252"
+                          dataType="str"
+                          length="1"
+                          name="Instr_Budget_Adjust" />
+                        <externalMetadataColumn
+                          refId="Package\Copy Data\BudDetail\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[IsMainItem]"
+                          codePage="1252"
+                          dataType="str"
+                          length="1"
+                          name="IsMainItem" />
+                        <externalMetadataColumn
+                          refId="Package\Copy Data\BudDetail\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Consolidate_On_Roll_Forward]"
+                          codePage="1252"
+                          dataType="str"
+                          length="1"
+                          name="Consolidate_On_Roll_Forward" />
+                        <externalMetadataColumn
+                          refId="Package\Copy Data\BudDetail\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Copy_Forward]"
+                          codePage="1252"
+                          dataType="str"
+                          length="1"
+                          name="Copy_Forward" />
+                        <externalMetadataColumn
+                          refId="Package\Copy Data\BudDetail\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[MainItemBudDetIDNum]"
+                          dataType="i4"
+                          name="MainItemBudDetIDNum" />
+                        <externalMetadataColumn
+                          refId="Package\Copy Data\BudDetail\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[LastYearBudDetIDNum]"
+                          dataType="i4"
+                          name="LastYearBudDetIDNum" />
+                        <externalMetadataColumn
+                          refId="Package\Copy Data\BudDetail\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[FYReqAmt]"
+                          dataType="numeric"
+                          name="FYReqAmt"
+                          precision="15"
+                          scale="2" />
+                        <externalMetadataColumn
+                          refId="Package\Copy Data\BudDetail\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[T_DeptID]"
+                          codePage="1252"
+                          dataType="str"
+                          length="10"
+                          name="T_DeptID" />
+                        <externalMetadataColumn
+                          refId="Package\Copy Data\BudDetail\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Source_PG]"
+                          codePage="1252"
+                          dataType="str"
+                          length="15"
+                          name="Source_PG" />
+                        <externalMetadataColumn
+                          refId="Package\Copy Data\BudDetail\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Source_Program_Code]"
+                          codePage="1252"
+                          dataType="str"
+                          length="5"
+                          name="Source_Program_Code" />
+                        <externalMetadataColumn
+                          refId="Package\Copy Data\BudDetail\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Routing_Deptid]"
+                          codePage="1252"
+                          dataType="str"
+                          length="6"
+                          name="Routing_Deptid" />
+                        <externalMetadataColumn
+                          refId="Package\Copy Data\BudDetail\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Request_Category]"
+                          codePage="1252"
+                          dataType="str"
+                          length="15"
+                          name="Request_Category" />
+                        <externalMetadataColumn
+                          refId="Package\Copy Data\BudDetail\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Request_Dept_Priority]"
+                          codePage="1252"
+                          dataType="str"
+                          length="15"
+                          name="Request_Dept_Priority" />
+                        <externalMetadataColumn
+                          refId="Package\Copy Data\BudDetail\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[FYBudFTE]"
+                          dataType="numeric"
+                          name="FYBudFTE"
+                          precision="15"
+                          scale="2" />
+                        <externalMetadataColumn
+                          refId="Package\Copy Data\BudDetail\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ApptBudgetPct]"
+                          dataType="numeric"
+                          name="ApptBudgetPct"
+                          precision="9"
+                          scale="4" />
+                        <externalMetadataColumn
+                          refId="Package\Copy Data\BudDetail\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Last_Update]"
+                          dataType="dbTimeStamp"
+                          name="Last_Update" />
+                        <externalMetadataColumn
+                          refId="Package\Copy Data\BudDetail\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[BudDet_Descr]"
+                          codePage="1252"
+                          dataType="str"
+                          length="2000"
+                          name="BudDet_Descr" />
+                        <externalMetadataColumn
+                          refId="Package\Copy Data\BudDetail\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Dean_Response]"
+                          codePage="1252"
+                          dataType="str"
+                          length="2000"
+                          name="Dean_Response" />
+                        <externalMetadataColumn
+                          refId="Package\Copy Data\BudDetail\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Dean_Note]"
+                          codePage="1252"
+                          dataType="str"
+                          length="2000"
+                          name="Dean_Note" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Copy Data\BudDetail\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="OLE DB Destination Error Output"
+                      synchronousInputId="Package\Copy Data\BudDetail\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Copy Data\BudDetail\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Copy Data\BudDetail\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Copy Data\BudDetail\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Copy Data\BudDetail\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Copy Data\BudDetail\OLE DB Source"
+                  componentClassID="Microsoft.OLEDBSource"
+                  contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+                  description="OLE DB Source"
+                  name="OLE DB Source"
+                  usesDispositions="true"
+                  version="7">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset"></property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT * FROM BudDetail</property>
+                    <property
+                      dataType="System.String"
+                      description="The variable that contains the SQL command to be executed."
+                      name="SqlCommandVariable"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">2</property>
+                    <property
+                      dataType="System.String"
+                      description="The mappings between the parameters in the SQL command and variables."
+                      name="ParameterMapping"></property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Copy Data\BudDetail\OLE DB Source.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[pooh.lbud]"
+                      connectionManagerRefId="Package.ConnectionManagers[pooh.lbud]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Output]"
+                      name="OLE DB Source Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Output].Columns[BUDDETIDNUM]"
+                          dataType="numeric"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[BUDDETIDNUM]"
+                          lineageId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Output].Columns[BUDDETIDNUM]"
+                          name="BUDDETIDNUM"
+                          precision="9"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Output].Columns[FUND_CODE]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[FUND_CODE]"
+                          length="5"
+                          lineageId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Output].Columns[FUND_CODE]"
+                          name="FUND_CODE"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Output].Columns[ORG_CODE]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ORG_CODE]"
+                          length="10"
+                          lineageId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Output].Columns[ORG_CODE]"
+                          name="ORG_CODE"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Output].Columns[PROGRAM_CODE]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[PROGRAM_CODE]"
+                          length="5"
+                          lineageId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Output].Columns[PROGRAM_CODE]"
+                          name="PROGRAM_CODE"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Output].Columns[PROJECT_GRANT]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[PROJECT_GRANT]"
+                          length="15"
+                          lineageId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Output].Columns[PROJECT_GRANT]"
+                          name="PROJECT_GRANT"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Output].Columns[ACCOUNT]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ACCOUNT]"
+                          length="6"
+                          lineageId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Output].Columns[ACCOUNT]"
+                          name="ACCOUNT"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Output].Columns[SUBCLASS]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[SUBCLASS]"
+                          length="5"
+                          lineageId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Output].Columns[SUBCLASS]"
+                          name="SUBCLASS"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Output].Columns[FY]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[FY]"
+                          length="4"
+                          lineageId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Output].Columns[FY]"
+                          name="FY"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Output].Columns[LEDGER]"
+                          dataType="numeric"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[LEDGER]"
+                          lineageId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Output].Columns[LEDGER]"
+                          name="LEDGER"
+                          precision="2"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Output].Columns[FYBUDAMT]"
+                          dataType="numeric"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[FYBUDAMT]"
+                          lineageId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Output].Columns[FYBUDAMT]"
+                          name="FYBUDAMT"
+                          precision="15"
+                          scale="2"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Output].Columns[FYBUDFTE]"
+                          dataType="numeric"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[FYBUDFTE]"
+                          lineageId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Output].Columns[FYBUDFTE]"
+                          name="FYBUDFTE"
+                          precision="15"
+                          scale="2"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Output].Columns[T_ORG_CODE]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[T_ORG_CODE]"
+                          length="6"
+                          lineageId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Output].Columns[T_ORG_CODE]"
+                          name="T_ORG_CODE"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Output].Columns[COMMIT_TYPE]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[COMMIT_TYPE]"
+                          length="1"
+                          lineageId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Output].Columns[COMMIT_TYPE]"
+                          name="COMMIT_TYPE"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Output].Columns[ITEM_STATUS]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ITEM_STATUS]"
+                          length="1"
+                          lineageId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Output].Columns[ITEM_STATUS]"
+                          name="ITEM_STATUS"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Output].Columns[ITEM_SOURCE]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ITEM_SOURCE]"
+                          length="1"
+                          lineageId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Output].Columns[ITEM_SOURCE]"
+                          name="ITEM_SOURCE"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Output].Columns[ITEM_PRIORITY]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ITEM_PRIORITY]"
+                          length="1"
+                          lineageId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Output].Columns[ITEM_PRIORITY]"
+                          name="ITEM_PRIORITY"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Output].Columns[BEGINFY]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[BEGINFY]"
+                          length="4"
+                          lineageId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Output].Columns[BEGINFY]"
+                          name="BEGINFY"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Output].Columns[ENDFY]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ENDFY]"
+                          length="4"
+                          lineageId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Output].Columns[ENDFY]"
+                          name="ENDFY"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Output].Columns[CONSOLIDATE_ON_ROLL_FORWARD]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[CONSOLIDATE_ON_ROLL_FORWARD]"
+                          length="1"
+                          lineageId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Output].Columns[CONSOLIDATE_ON_ROLL_FORWARD]"
+                          name="CONSOLIDATE_ON_ROLL_FORWARD"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Output].Columns[INSTRUCTIONAL_BUDGET]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[INSTRUCTIONAL_BUDGET]"
+                          length="1"
+                          lineageId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Output].Columns[INSTRUCTIONAL_BUDGET]"
+                          name="INSTRUCTIONAL_BUDGET"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Output].Columns[INSTR_BUDGET_ADJUST]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[INSTR_BUDGET_ADJUST]"
+                          length="1"
+                          lineageId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Output].Columns[INSTR_BUDGET_ADJUST]"
+                          name="INSTR_BUDGET_ADJUST"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Output].Columns[SHORT_DESCR]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[SHORT_DESCR]"
+                          length="40"
+                          lineageId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Output].Columns[SHORT_DESCR]"
+                          name="SHORT_DESCR"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Output].Columns[YEAR_ORDINAL]"
+                          dataType="r8"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[YEAR_ORDINAL]"
+                          lineageId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Output].Columns[YEAR_ORDINAL]"
+                          name="YEAR_ORDINAL"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Output].Columns[YEARS_TOTAL]"
+                          dataType="r8"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[YEARS_TOTAL]"
+                          lineageId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Output].Columns[YEARS_TOTAL]"
+                          name="YEARS_TOTAL"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Output].Columns[SOURCE_PG]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[SOURCE_PG]"
+                          length="15"
+                          lineageId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Output].Columns[SOURCE_PG]"
+                          name="SOURCE_PG"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Output].Columns[SOURCE_PROGRAM_CODE]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[SOURCE_PROGRAM_CODE]"
+                          length="5"
+                          lineageId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Output].Columns[SOURCE_PROGRAM_CODE]"
+                          name="SOURCE_PROGRAM_CODE"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Output].Columns[ISMAINITEM]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ISMAINITEM]"
+                          length="1"
+                          lineageId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Output].Columns[ISMAINITEM]"
+                          name="ISMAINITEM"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Output].Columns[MAINITEMBUDDETIDNUM]"
+                          dataType="numeric"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[MAINITEMBUDDETIDNUM]"
+                          lineageId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Output].Columns[MAINITEMBUDDETIDNUM]"
+                          name="MAINITEMBUDDETIDNUM"
+                          precision="9"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Output].Columns[LASTYEARBUDDETIDNUM]"
+                          dataType="numeric"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[LASTYEARBUDDETIDNUM]"
+                          lineageId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Output].Columns[LASTYEARBUDDETIDNUM]"
+                          name="LASTYEARBUDDETIDNUM"
+                          precision="9"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Output].Columns[BUDDET_DESCR]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[BUDDET_DESCR]"
+                          length="2000"
+                          lineageId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Output].Columns[BUDDET_DESCR]"
+                          name="BUDDET_DESCR"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Output].Columns[APPTBUDGETPCT]"
+                          dataType="numeric"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[APPTBUDGETPCT]"
+                          lineageId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Output].Columns[APPTBUDGETPCT]"
+                          name="APPTBUDGETPCT"
+                          precision="4"
+                          scale="3"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Output].Columns[PUBLISH]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[PUBLISH]"
+                          length="1"
+                          lineageId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Output].Columns[PUBLISH]"
+                          name="PUBLISH"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Output].Columns[DEANNOTE]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[DEANNOTE]"
+                          length="2000"
+                          lineageId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Output].Columns[DEANNOTE]"
+                          name="DEANNOTE"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Output].Columns[LAST_UPDATE]"
+                          dataType="dbTimeStamp"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[LAST_UPDATE]"
+                          lineageId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Output].Columns[LAST_UPDATE]"
+                          name="LAST_UPDATE"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Output].Columns[ROUTING_DEPTID]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ROUTING_DEPTID]"
+                          length="6"
+                          lineageId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Output].Columns[ROUTING_DEPTID]"
+                          name="ROUTING_DEPTID"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Output].Columns[REQUEST_CATEGORY]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[REQUEST_CATEGORY]"
+                          length="1"
+                          lineageId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Output].Columns[REQUEST_CATEGORY]"
+                          name="REQUEST_CATEGORY"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Output].Columns[REQUEST_DEPT_PRIORITY]"
+                          dataType="numeric"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[REQUEST_DEPT_PRIORITY]"
+                          lineageId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Output].Columns[REQUEST_DEPT_PRIORITY]"
+                          name="REQUEST_DEPT_PRIORITY"
+                          precision="3"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Output].Columns[COPY_FORWARD]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[COPY_FORWARD]"
+                          length="1"
+                          lineageId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Output].Columns[COPY_FORWARD]"
+                          name="COPY_FORWARD"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Output].Columns[DEAN_RESPONSE]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[DEAN_RESPONSE]"
+                          length="2000"
+                          lineageId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Output].Columns[DEAN_RESPONSE]"
+                          name="DEAN_RESPONSE"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Output].Columns[FYREQAMT]"
+                          dataType="numeric"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[FYREQAMT]"
+                          lineageId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Output].Columns[FYREQAMT]"
+                          name="FYREQAMT"
+                          precision="15"
+                          scale="2"
+                          truncationRowDisposition="FailComponent" />
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[BUDDETIDNUM]"
+                          dataType="numeric"
+                          name="BUDDETIDNUM"
+                          precision="9" />
+                        <externalMetadataColumn
+                          refId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[FUND_CODE]"
+                          codePage="1252"
+                          dataType="str"
+                          length="5"
+                          name="FUND_CODE" />
+                        <externalMetadataColumn
+                          refId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ORG_CODE]"
+                          codePage="1252"
+                          dataType="str"
+                          length="10"
+                          name="ORG_CODE" />
+                        <externalMetadataColumn
+                          refId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[PROGRAM_CODE]"
+                          codePage="1252"
+                          dataType="str"
+                          length="5"
+                          name="PROGRAM_CODE" />
+                        <externalMetadataColumn
+                          refId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[PROJECT_GRANT]"
+                          codePage="1252"
+                          dataType="str"
+                          length="15"
+                          name="PROJECT_GRANT" />
+                        <externalMetadataColumn
+                          refId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ACCOUNT]"
+                          codePage="1252"
+                          dataType="str"
+                          length="6"
+                          name="ACCOUNT" />
+                        <externalMetadataColumn
+                          refId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[SUBCLASS]"
+                          codePage="1252"
+                          dataType="str"
+                          length="5"
+                          name="SUBCLASS" />
+                        <externalMetadataColumn
+                          refId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[FY]"
+                          codePage="1252"
+                          dataType="str"
+                          length="4"
+                          name="FY" />
+                        <externalMetadataColumn
+                          refId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[LEDGER]"
+                          dataType="numeric"
+                          name="LEDGER"
+                          precision="2" />
+                        <externalMetadataColumn
+                          refId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[FYBUDAMT]"
+                          dataType="numeric"
+                          name="FYBUDAMT"
+                          precision="15"
+                          scale="2" />
+                        <externalMetadataColumn
+                          refId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[FYBUDFTE]"
+                          dataType="numeric"
+                          name="FYBUDFTE"
+                          precision="15"
+                          scale="2" />
+                        <externalMetadataColumn
+                          refId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[T_ORG_CODE]"
+                          codePage="1252"
+                          dataType="str"
+                          length="6"
+                          name="T_ORG_CODE" />
+                        <externalMetadataColumn
+                          refId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[COMMIT_TYPE]"
+                          codePage="1252"
+                          dataType="str"
+                          length="1"
+                          name="COMMIT_TYPE" />
+                        <externalMetadataColumn
+                          refId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ITEM_STATUS]"
+                          codePage="1252"
+                          dataType="str"
+                          length="1"
+                          name="ITEM_STATUS" />
+                        <externalMetadataColumn
+                          refId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ITEM_SOURCE]"
+                          codePage="1252"
+                          dataType="str"
+                          length="1"
+                          name="ITEM_SOURCE" />
+                        <externalMetadataColumn
+                          refId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ITEM_PRIORITY]"
+                          codePage="1252"
+                          dataType="str"
+                          length="1"
+                          name="ITEM_PRIORITY" />
+                        <externalMetadataColumn
+                          refId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[BEGINFY]"
+                          codePage="1252"
+                          dataType="str"
+                          length="4"
+                          name="BEGINFY" />
+                        <externalMetadataColumn
+                          refId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ENDFY]"
+                          codePage="1252"
+                          dataType="str"
+                          length="4"
+                          name="ENDFY" />
+                        <externalMetadataColumn
+                          refId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[CONSOLIDATE_ON_ROLL_FORWARD]"
+                          codePage="1252"
+                          dataType="str"
+                          length="1"
+                          name="CONSOLIDATE_ON_ROLL_FORWARD" />
+                        <externalMetadataColumn
+                          refId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[INSTRUCTIONAL_BUDGET]"
+                          codePage="1252"
+                          dataType="str"
+                          length="1"
+                          name="INSTRUCTIONAL_BUDGET" />
+                        <externalMetadataColumn
+                          refId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[INSTR_BUDGET_ADJUST]"
+                          codePage="1252"
+                          dataType="str"
+                          length="1"
+                          name="INSTR_BUDGET_ADJUST" />
+                        <externalMetadataColumn
+                          refId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[SHORT_DESCR]"
+                          codePage="1252"
+                          dataType="str"
+                          length="40"
+                          name="SHORT_DESCR" />
+                        <externalMetadataColumn
+                          refId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[YEAR_ORDINAL]"
+                          dataType="r8"
+                          name="YEAR_ORDINAL" />
+                        <externalMetadataColumn
+                          refId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[YEARS_TOTAL]"
+                          dataType="r8"
+                          name="YEARS_TOTAL" />
+                        <externalMetadataColumn
+                          refId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[SOURCE_PG]"
+                          codePage="1252"
+                          dataType="str"
+                          length="15"
+                          name="SOURCE_PG" />
+                        <externalMetadataColumn
+                          refId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[SOURCE_PROGRAM_CODE]"
+                          codePage="1252"
+                          dataType="str"
+                          length="5"
+                          name="SOURCE_PROGRAM_CODE" />
+                        <externalMetadataColumn
+                          refId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ISMAINITEM]"
+                          codePage="1252"
+                          dataType="str"
+                          length="1"
+                          name="ISMAINITEM" />
+                        <externalMetadataColumn
+                          refId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[MAINITEMBUDDETIDNUM]"
+                          dataType="numeric"
+                          name="MAINITEMBUDDETIDNUM"
+                          precision="9" />
+                        <externalMetadataColumn
+                          refId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[LASTYEARBUDDETIDNUM]"
+                          dataType="numeric"
+                          name="LASTYEARBUDDETIDNUM"
+                          precision="9" />
+                        <externalMetadataColumn
+                          refId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[BUDDET_DESCR]"
+                          codePage="1252"
+                          dataType="str"
+                          length="2000"
+                          name="BUDDET_DESCR" />
+                        <externalMetadataColumn
+                          refId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[APPTBUDGETPCT]"
+                          dataType="numeric"
+                          name="APPTBUDGETPCT"
+                          precision="4"
+                          scale="3" />
+                        <externalMetadataColumn
+                          refId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[PUBLISH]"
+                          codePage="1252"
+                          dataType="str"
+                          length="1"
+                          name="PUBLISH" />
+                        <externalMetadataColumn
+                          refId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[DEANNOTE]"
+                          codePage="1252"
+                          dataType="str"
+                          length="2000"
+                          name="DEANNOTE" />
+                        <externalMetadataColumn
+                          refId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[LAST_UPDATE]"
+                          dataType="dbTimeStamp"
+                          name="LAST_UPDATE" />
+                        <externalMetadataColumn
+                          refId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ROUTING_DEPTID]"
+                          codePage="1252"
+                          dataType="str"
+                          length="6"
+                          name="ROUTING_DEPTID" />
+                        <externalMetadataColumn
+                          refId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[REQUEST_CATEGORY]"
+                          codePage="1252"
+                          dataType="str"
+                          length="1"
+                          name="REQUEST_CATEGORY" />
+                        <externalMetadataColumn
+                          refId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[REQUEST_DEPT_PRIORITY]"
+                          dataType="numeric"
+                          name="REQUEST_DEPT_PRIORITY"
+                          precision="3" />
+                        <externalMetadataColumn
+                          refId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[COPY_FORWARD]"
+                          codePage="1252"
+                          dataType="str"
+                          length="1"
+                          name="COPY_FORWARD" />
+                        <externalMetadataColumn
+                          refId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[DEAN_RESPONSE]"
+                          codePage="1252"
+                          dataType="str"
+                          length="2000"
+                          name="DEAN_RESPONSE" />
+                        <externalMetadataColumn
+                          refId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[FYREQAMT]"
+                          dataType="numeric"
+                          name="FYREQAMT"
+                          precision="15"
+                          scale="2" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Error Output]"
+                      isErrorOut="true"
+                      name="OLE DB Source Error Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[BUDDETIDNUM]"
+                          dataType="numeric"
+                          lineageId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[BUDDETIDNUM]"
+                          name="BUDDETIDNUM"
+                          precision="9" />
+                        <outputColumn
+                          refId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[FUND_CODE]"
+                          codePage="1252"
+                          dataType="str"
+                          length="5"
+                          lineageId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[FUND_CODE]"
+                          name="FUND_CODE" />
+                        <outputColumn
+                          refId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ORG_CODE]"
+                          codePage="1252"
+                          dataType="str"
+                          length="10"
+                          lineageId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ORG_CODE]"
+                          name="ORG_CODE" />
+                        <outputColumn
+                          refId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[PROGRAM_CODE]"
+                          codePage="1252"
+                          dataType="str"
+                          length="5"
+                          lineageId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[PROGRAM_CODE]"
+                          name="PROGRAM_CODE" />
+                        <outputColumn
+                          refId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[PROJECT_GRANT]"
+                          codePage="1252"
+                          dataType="str"
+                          length="15"
+                          lineageId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[PROJECT_GRANT]"
+                          name="PROJECT_GRANT" />
+                        <outputColumn
+                          refId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ACCOUNT]"
+                          codePage="1252"
+                          dataType="str"
+                          length="6"
+                          lineageId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ACCOUNT]"
+                          name="ACCOUNT" />
+                        <outputColumn
+                          refId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[SUBCLASS]"
+                          codePage="1252"
+                          dataType="str"
+                          length="5"
+                          lineageId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[SUBCLASS]"
+                          name="SUBCLASS" />
+                        <outputColumn
+                          refId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[FY]"
+                          codePage="1252"
+                          dataType="str"
+                          length="4"
+                          lineageId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[FY]"
+                          name="FY" />
+                        <outputColumn
+                          refId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[LEDGER]"
+                          dataType="numeric"
+                          lineageId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[LEDGER]"
+                          name="LEDGER"
+                          precision="2" />
+                        <outputColumn
+                          refId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[FYBUDAMT]"
+                          dataType="numeric"
+                          lineageId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[FYBUDAMT]"
+                          name="FYBUDAMT"
+                          precision="15"
+                          scale="2" />
+                        <outputColumn
+                          refId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[FYBUDFTE]"
+                          dataType="numeric"
+                          lineageId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[FYBUDFTE]"
+                          name="FYBUDFTE"
+                          precision="15"
+                          scale="2" />
+                        <outputColumn
+                          refId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[T_ORG_CODE]"
+                          codePage="1252"
+                          dataType="str"
+                          length="6"
+                          lineageId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[T_ORG_CODE]"
+                          name="T_ORG_CODE" />
+                        <outputColumn
+                          refId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[COMMIT_TYPE]"
+                          codePage="1252"
+                          dataType="str"
+                          length="1"
+                          lineageId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[COMMIT_TYPE]"
+                          name="COMMIT_TYPE" />
+                        <outputColumn
+                          refId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ITEM_STATUS]"
+                          codePage="1252"
+                          dataType="str"
+                          length="1"
+                          lineageId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ITEM_STATUS]"
+                          name="ITEM_STATUS" />
+                        <outputColumn
+                          refId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ITEM_SOURCE]"
+                          codePage="1252"
+                          dataType="str"
+                          length="1"
+                          lineageId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ITEM_SOURCE]"
+                          name="ITEM_SOURCE" />
+                        <outputColumn
+                          refId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ITEM_PRIORITY]"
+                          codePage="1252"
+                          dataType="str"
+                          length="1"
+                          lineageId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ITEM_PRIORITY]"
+                          name="ITEM_PRIORITY" />
+                        <outputColumn
+                          refId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[BEGINFY]"
+                          codePage="1252"
+                          dataType="str"
+                          length="4"
+                          lineageId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[BEGINFY]"
+                          name="BEGINFY" />
+                        <outputColumn
+                          refId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ENDFY]"
+                          codePage="1252"
+                          dataType="str"
+                          length="4"
+                          lineageId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ENDFY]"
+                          name="ENDFY" />
+                        <outputColumn
+                          refId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[CONSOLIDATE_ON_ROLL_FORWARD]"
+                          codePage="1252"
+                          dataType="str"
+                          length="1"
+                          lineageId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[CONSOLIDATE_ON_ROLL_FORWARD]"
+                          name="CONSOLIDATE_ON_ROLL_FORWARD" />
+                        <outputColumn
+                          refId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[INSTRUCTIONAL_BUDGET]"
+                          codePage="1252"
+                          dataType="str"
+                          length="1"
+                          lineageId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[INSTRUCTIONAL_BUDGET]"
+                          name="INSTRUCTIONAL_BUDGET" />
+                        <outputColumn
+                          refId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[INSTR_BUDGET_ADJUST]"
+                          codePage="1252"
+                          dataType="str"
+                          length="1"
+                          lineageId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[INSTR_BUDGET_ADJUST]"
+                          name="INSTR_BUDGET_ADJUST" />
+                        <outputColumn
+                          refId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[SHORT_DESCR]"
+                          codePage="1252"
+                          dataType="str"
+                          length="40"
+                          lineageId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[SHORT_DESCR]"
+                          name="SHORT_DESCR" />
+                        <outputColumn
+                          refId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[YEAR_ORDINAL]"
+                          dataType="r8"
+                          lineageId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[YEAR_ORDINAL]"
+                          name="YEAR_ORDINAL" />
+                        <outputColumn
+                          refId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[YEARS_TOTAL]"
+                          dataType="r8"
+                          lineageId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[YEARS_TOTAL]"
+                          name="YEARS_TOTAL" />
+                        <outputColumn
+                          refId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[SOURCE_PG]"
+                          codePage="1252"
+                          dataType="str"
+                          length="15"
+                          lineageId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[SOURCE_PG]"
+                          name="SOURCE_PG" />
+                        <outputColumn
+                          refId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[SOURCE_PROGRAM_CODE]"
+                          codePage="1252"
+                          dataType="str"
+                          length="5"
+                          lineageId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[SOURCE_PROGRAM_CODE]"
+                          name="SOURCE_PROGRAM_CODE" />
+                        <outputColumn
+                          refId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ISMAINITEM]"
+                          codePage="1252"
+                          dataType="str"
+                          length="1"
+                          lineageId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ISMAINITEM]"
+                          name="ISMAINITEM" />
+                        <outputColumn
+                          refId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[MAINITEMBUDDETIDNUM]"
+                          dataType="numeric"
+                          lineageId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[MAINITEMBUDDETIDNUM]"
+                          name="MAINITEMBUDDETIDNUM"
+                          precision="9" />
+                        <outputColumn
+                          refId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[LASTYEARBUDDETIDNUM]"
+                          dataType="numeric"
+                          lineageId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[LASTYEARBUDDETIDNUM]"
+                          name="LASTYEARBUDDETIDNUM"
+                          precision="9" />
+                        <outputColumn
+                          refId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[BUDDET_DESCR]"
+                          codePage="1252"
+                          dataType="str"
+                          length="2000"
+                          lineageId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[BUDDET_DESCR]"
+                          name="BUDDET_DESCR" />
+                        <outputColumn
+                          refId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[APPTBUDGETPCT]"
+                          dataType="numeric"
+                          lineageId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[APPTBUDGETPCT]"
+                          name="APPTBUDGETPCT"
+                          precision="4"
+                          scale="3" />
+                        <outputColumn
+                          refId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[PUBLISH]"
+                          codePage="1252"
+                          dataType="str"
+                          length="1"
+                          lineageId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[PUBLISH]"
+                          name="PUBLISH" />
+                        <outputColumn
+                          refId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[DEANNOTE]"
+                          codePage="1252"
+                          dataType="str"
+                          length="2000"
+                          lineageId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[DEANNOTE]"
+                          name="DEANNOTE" />
+                        <outputColumn
+                          refId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[LAST_UPDATE]"
+                          dataType="dbTimeStamp"
+                          lineageId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[LAST_UPDATE]"
+                          name="LAST_UPDATE" />
+                        <outputColumn
+                          refId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ROUTING_DEPTID]"
+                          codePage="1252"
+                          dataType="str"
+                          length="6"
+                          lineageId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ROUTING_DEPTID]"
+                          name="ROUTING_DEPTID" />
+                        <outputColumn
+                          refId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[REQUEST_CATEGORY]"
+                          codePage="1252"
+                          dataType="str"
+                          length="1"
+                          lineageId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[REQUEST_CATEGORY]"
+                          name="REQUEST_CATEGORY" />
+                        <outputColumn
+                          refId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[REQUEST_DEPT_PRIORITY]"
+                          dataType="numeric"
+                          lineageId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[REQUEST_DEPT_PRIORITY]"
+                          name="REQUEST_DEPT_PRIORITY"
+                          precision="3" />
+                        <outputColumn
+                          refId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[COPY_FORWARD]"
+                          codePage="1252"
+                          dataType="str"
+                          length="1"
+                          lineageId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[COPY_FORWARD]"
+                          name="COPY_FORWARD" />
+                        <outputColumn
+                          refId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[DEAN_RESPONSE]"
+                          codePage="1252"
+                          dataType="str"
+                          length="2000"
+                          lineageId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[DEAN_RESPONSE]"
+                          name="DEAN_RESPONSE" />
+                        <outputColumn
+                          refId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[FYREQAMT]"
+                          dataType="numeric"
+                          lineageId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[FYREQAMT]"
+                          name="FYREQAMT"
+                          precision="15"
+                          scale="2" />
+                        <outputColumn
+                          refId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\Copy Data\BudDetail.Paths[OLE DB Source Output]"
+                  endId="Package\Copy Data\BudDetail\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                  name="OLE DB Source Output"
+                  startId="Package\Copy Data\BudDetail\OLE DB Source.Outputs[OLE DB Source Output]" />
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Delete Rows"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Sequence Container"
+      DTS:DTSID="{f76e80df-400e-4403-baa0-38cdc33c7a51}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Delete Rows">
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\Delete Rows\Delete BudDetail"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{dff6f850-c598-4a34-aeb2-87d9d0f0ffeb}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Delete BudDetail"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{D7FE6B55-AF96-4217-8A83-F7BF549DCC1D}"
+              SQLTask:SqlStatementSource="TRUNCATE TABLE [lsa_AdminData].[dbo].[BudDetail]" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Delete Rows\Delete BudDetail_Access"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{ece2c8d3-6652-4997-9efe-dfe97ca40539}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Delete BudDetail_Access"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{D7FE6B55-AF96-4217-8A83-F7BF549DCC1D}"
+              SQLTask:SqlStatementSource="Truncate TABLE [dbo].[BudDetail_Access]" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Delete Rows\Delete BudDetail_Deleted"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{b3de20a9-d6d4-419d-bfb2-cbd524b80f73}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Delete BudDetail_Deleted"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{D7FE6B55-AF96-4217-8A83-F7BF549DCC1D}"
+              SQLTask:SqlStatementSource="TRUNCATE TABLE [lsa_AdminData].[dbo].[BudDetail_Deleted]" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Delete Rows\Delete BudDetail_FY_Status"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{7dfa2634-7458-4b1d-bdf6-0054e2889126}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Delete BudDetail_FY_Status"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{D7FE6B55-AF96-4217-8A83-F7BF549DCC1D}"
+              SQLTask:SqlStatementSource="Truncate TABLE [dbo].[BudDetail_FY_Status]" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Delete Rows\Delete BudDetail_Ledger_Status"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{2ada19b3-7e93-4b6d-b86b-e73c3ff02951}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Delete BudDetail_Ledger_Status"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{D7FE6B55-AF96-4217-8A83-F7BF549DCC1D}"
+              SQLTask:SqlStatementSource="Truncate TABLE [dbo].[BudDetail_FY_Status]" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Delete Rows\Delete BudDetail_Log"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{31845bd1-b8ad-42fa-a699-6be088091816}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Delete BudDetail_Log"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{D7FE6B55-AF96-4217-8A83-F7BF549DCC1D}"
+              SQLTask:SqlStatementSource="Truncate TABLE [dbo].[BudDetail_Log]" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Delete Rows\Delete BudDetail_Notes"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{6CD3A879-84EE-4E24-8ED2-36FBC0AD85BD}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Delete BudDetail_Notes"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{D7FE6B55-AF96-4217-8A83-F7BF549DCC1D}"
+              SQLTask:SqlStatementSource="Truncate TABLE [dbo].[BudDetail_Notes]" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Delete Rows\Delete BudDetail_Related"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{9B671058-8D1C-4C12-A7D6-1C72DE62C62B}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Delete BudDetail_Related"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{D7FE6B55-AF96-4217-8A83-F7BF549DCC1D}"
+              SQLTask:SqlStatementSource="Truncate TABLE [dbo].[BudDetail_Related]" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Delete Rows\Delete BudDetail_Translation"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{C6757477-247C-486D-85CC-D23B249F8535}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Delete BudDetail_Translation"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{D7FE6B55-AF96-4217-8A83-F7BF549DCC1D}"
+              SQLTask:SqlStatementSource="Truncate TABLE [dbo].[BudDetail_Translation]" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Delete Rows.PrecedenceConstraints[Constraint]"
+          DTS:CreationName=""
+          DTS:DTSID="{2670abe2-1303-4376-91d9-a8dbde1d3dfd}"
+          DTS:From="Package\Delete Rows\Delete BudDetail"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint"
+          DTS:To="Package\Delete Rows\Delete BudDetail_Deleted" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Delete Rows.PrecedenceConstraints[Constraint 1]"
+          DTS:CreationName=""
+          DTS:DTSID="{84ab033b-79c7-47cd-8c32-4c43b9e37f80}"
+          DTS:From="Package\Delete Rows\Delete BudDetail_Deleted"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 1"
+          DTS:To="Package\Delete Rows\Delete BudDetail_Access" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Delete Rows.PrecedenceConstraints[Constraint 2]"
+          DTS:CreationName=""
+          DTS:DTSID="{30a0791d-14d3-4980-b7e9-d7d540661561}"
+          DTS:From="Package\Delete Rows\Delete BudDetail_Access"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 2"
+          DTS:To="Package\Delete Rows\Delete BudDetail_FY_Status" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Delete Rows.PrecedenceConstraints[Constraint 3]"
+          DTS:CreationName=""
+          DTS:DTSID="{0fc596d2-1da6-4e44-8c88-4960e69900d4}"
+          DTS:From="Package\Delete Rows\Delete BudDetail_FY_Status"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 3"
+          DTS:To="Package\Delete Rows\Delete BudDetail_Ledger_Status" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Delete Rows.PrecedenceConstraints[Constraint 4]"
+          DTS:CreationName=""
+          DTS:DTSID="{21818434-b460-452c-8cc0-bce290d630f2}"
+          DTS:From="Package\Delete Rows\Delete BudDetail_Ledger_Status"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 4"
+          DTS:To="Package\Delete Rows\Delete BudDetail_Log" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Delete Rows.PrecedenceConstraints[Constraint 5]"
+          DTS:CreationName=""
+          DTS:DTSID="{CA7B3119-DFA2-494C-B496-E8315B795D39}"
+          DTS:From="Package\Delete Rows\Delete BudDetail_Log"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 5"
+          DTS:To="Package\Delete Rows\Delete BudDetail_Related" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Delete Rows.PrecedenceConstraints[Constraint 6]"
+          DTS:CreationName=""
+          DTS:DTSID="{D000357B-1C47-4C6C-9A55-3475BB4B91DC}"
+          DTS:From="Package\Delete Rows\Delete BudDetail_Related"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 6"
+          DTS:To="Package\Delete Rows\Delete BudDetail_Notes" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Delete Rows.PrecedenceConstraints[Constraint 7]"
+          DTS:CreationName=""
+          DTS:DTSID="{FB47C39C-09A2-4848-994F-1BB54563F64F}"
+          DTS:From="Package\Delete Rows\Delete BudDetail_Notes"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 7"
+          DTS:To="Package\Delete Rows\Delete BudDetail_Translation" />
+      </DTS:PrecedenceConstraints>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="159,42"
+          Id="Package\Delete Rows\Delete BudDetail"
+          TopLeft="49,14" />
+        <NodeLayout
+          Size="197,42"
+          Id="Package\Delete Rows\Delete BudDetail_Access"
+          TopLeft="30,161.881089309878" />
+        <NodeLayout
+          Size="201,42"
+          Id="Package\Delete Rows\Delete BudDetail_Deleted"
+          TopLeft="28,87.9405446549391" />
+        <NodeLayout
+          Size="212,42"
+          Id="Package\Delete Rows\Delete BudDetail_FY_Status"
+          TopLeft="22.5,235.821633964817" />
+        <NodeLayout
+          Size="233,42"
+          Id="Package\Delete Rows\Delete BudDetail_Ledger_Status"
+          TopLeft="12,309.762178619756" />
+        <NodeLayout
+          Size="182,42"
+          Id="Package\Delete Rows\Delete BudDetail_Log"
+          TopLeft="37.5,383.702723274696" />
+        <EdgeLayout
+          Id="Package\Delete Rows.PrecedenceConstraints[Constraint]"
+          TopLeft="128.5,56">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,31.9405446549391"
+              Start="0,0"
+              End="0,24.4405446549391">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,24.4405446549391" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Delete Rows.PrecedenceConstraints[Constraint 1]"
+          TopLeft="128.5,129.940544654939">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,31.9405446549391"
+              Start="0,0"
+              End="0,24.4405446549391">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,24.4405446549391" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Delete Rows.PrecedenceConstraints[Constraint 2]"
+          TopLeft="128.5,203.881089309878">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,31.9405446549391"
+              Start="0,0"
+              End="0,24.4405446549391">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,24.4405446549391" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Delete Rows.PrecedenceConstraints[Constraint 3]"
+          TopLeft="128.5,277.821633964817">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,31.9405446549391"
+              Start="0,0"
+              End="0,24.4405446549391">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,24.4405446549391" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Delete Rows.PrecedenceConstraints[Constraint 4]"
+          TopLeft="128.5,351.762178619756">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,31.9405446549391"
+              Start="0,0"
+              End="0,24.4405446549391">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,24.4405446549391" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="201,42"
+          Id="Package\Delete Rows\Delete BudDetail_Related"
+          TopLeft="28,457.643267929635" />
+        <EdgeLayout
+          Id="Package\Delete Rows.PrecedenceConstraints[Constraint 5]"
+          TopLeft="128.5,425.702723274696">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,31.9405446549391"
+              Start="0,0"
+              End="0,24.4405446549391">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,24.4405446549391" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="192,42"
+          Id="Package\Delete Rows\Delete BudDetail_Notes"
+          TopLeft="32.5,531.583812584574" />
+        <EdgeLayout
+          Id="Package\Delete Rows.PrecedenceConstraints[Constraint 6]"
+          TopLeft="128.5,499.643267929635">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,31.9405446549391"
+              Start="0,0"
+              End="0,24.4405446549391">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,24.4405446549391" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="217,42"
+          Id="Package\Delete Rows\Delete BudDetail_Translation"
+          TopLeft="20,605.524357239513" />
+        <EdgeLayout
+          Id="Package\Delete Rows.PrecedenceConstraints[Constraint 7]"
+          TopLeft="128.5,573.583812584574">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,31.9405446549391"
+              Start="0,0"
+              End="0,24.4405446549391">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,24.4405446549391" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="254,653"
+          Size="254,696"
+          Id="Package\Delete Rows"
+          TopLeft="59,60.9756427604871" />
+        <NodeLayout
+          Size="126,42"
+          Id="Package\Copy Data\BudDetail"
+          TopLeft="23,21" />
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="205,440"
+          Size="205,483"
+          Id="Package\Copy Data"
+          TopLeft="703.5,50.5" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Copy Data\BudDetail">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="152,42"
+          Id="Package\Copy Data\BudDetail\OLE DB Source"
+          TopLeft="154.5,106.5" />
+        <NodeLayout
+          Size="173,42"
+          Id="Package\Copy Data\BudDetail\OLE DB Destination"
+          TopLeft="608.5,122.5" />
+        <EdgeLayout
+          Id="Package\Copy Data\BudDetail.Paths[OLE DB Source Output]"
+          TopLeft="306.5,127.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="302,16"
+              Start="0,0"
+              End="294.5,16">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="147,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="147,0"
+                    Point2="151,0"
+                    Point3="151,4" />
+                  <mssgle:LineSegment
+                    End="151,12" />
+                  <mssgle:CubicBezierSegment
+                    Point1="151,12"
+                    Point2="151,16"
+                    Point3="155,16" />
+                  <mssgle:LineSegment
+                    End="294.5,16" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Copy Data\BudDetail\OLE DB Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Copy Data\BudDetail\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
 </DTS:Executable>
